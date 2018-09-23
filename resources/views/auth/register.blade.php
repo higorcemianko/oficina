@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: #00BFFF"><b>Register</b></div>
-                <div class="panel-body">
+                <div class="panel-heading" style="background-color: #808080"><b>Register</b></div>
+                <div class="panel-body" style="background-color: #DCDCDC">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 

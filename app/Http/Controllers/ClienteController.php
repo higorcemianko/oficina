@@ -3,9 +3,12 @@
 	use oficina\Cliente;
 	use Auth;
 	use oficina\Http\Requests\ClientesRequest;
+	use Illuminate\Support\Facades\Request;
 
 	class ClienteController extends Controller{
 		public function __construct(){
+			$this->middleware('nosso-middleware', 
+        ['only' => ['lista']]);
 
 		}
 
@@ -15,8 +18,9 @@
 
 		public function adiciona(ClientesRequest $request){
 			
-			$cliente = new Cliente();
-			$cliente->cpfcnpj = $request->input('cpfcnpj');
+			Cliente::create($request->all());
+
+			/*$cliente->cpfcnpj = $request->input('cpfcnpj');
 			$cliente->tipopessoa = $request->input('tipopessoa');
 			$cliente->nome = $request->input('nome');
 			$cliente->ddd = $request->input('ddd');
@@ -25,7 +29,10 @@
 			$cliente->email = $request->input('email');			
 			$cliente->save();
 
-			return view('mensagens.sucesso')->with('mensagem', 'Cliente adicionado com sucesso!');
+			return view('mensagens.sucesso')->with('mensagem', 'Cliente adicionado com sucesso!');*/
+			return redirect()
+            ->action('ClienteController@lista')
+            ->withInput(Request::only('nome'));
 		}
 
 		public function lista(){

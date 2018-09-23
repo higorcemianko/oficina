@@ -31,5 +31,11 @@
 			@endforeach
 		</table>
 	</div>
+	@if(old('nome'))
+  		<div class="alert alert-success">
+    	<strong>Sucesso!</strong> 
+        	O cliente {{ old('nome') }} foi adicionado.
+  		</div>
+	@endif
 @endif
 @stop

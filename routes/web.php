@@ -18,12 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/clientes/lista', 'ClienteController@lista');
 
 Route::group(['middleware' => ['auth']], function()
 {
 	Route::get('/clientes/novo', 'ClienteController@novo');
 	Route::post('/clientes/adiciona', 'ClienteController@adiciona');
-	Route::get('/clientes/lista', 'ClienteController@lista');
+	//Route::get('/clientes/lista', 'ClienteController@lista');
 
 	Route::get('/veiculos/novo', 'VeiculoController@novo');
 	Route::post('/veiculos/adiciona', 'VeiculoController@adiciona');

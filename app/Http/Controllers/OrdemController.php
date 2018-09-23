@@ -19,6 +19,8 @@
 		}
 
 		public function adiciona(OrdensRequest $request){
+
+			//Ordem::create($request->all());
 			
 			$ordem = new Ordem();
 			$ordem->id_veiculo = $request->input('id_veiculo');
@@ -28,14 +30,17 @@
 				
 			$ordem->save();
 
-			$veiculo = Veiculo::find($ordem->id_veiculo);
-			$veiculo->km = $ordem->km;
+
+			$veiculo = Veiculo::find($request->input('id_veiculo'));
+			$veiculo->km = $request->input('km');
 
 			$veiculo->save();
 
 			$cliente = Cliente::find($veiculo->proprietario);
 
 			return view('ordens.detalhes')->with(array('ordem'=>$ordem, 'veiculo'=>$veiculo,'cliente'=>$cliente ));
+			/*return redirect()
+            ->action('OrdemController@lista');*/
 		}
 
 		public function detalhes($ordem){
