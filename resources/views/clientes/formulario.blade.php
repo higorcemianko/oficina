@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="form-group">
-			<input type="radio" name="tipopessoa" value="1"> <label>Pessoa Física</label>
+			<input type="radio" name="tipopessoa" value="1"> <label>Pessoa Física 1</label>
 			<input type="radio" name="tipopessoa" value="2"> <label>Pessoa Jurídica</label> 
 		</div>
 		
